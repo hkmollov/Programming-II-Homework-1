@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h2 Comments
+
+  if messages
+    each obj, message in messages
+        pre= `Name: ${obj.name} -- Message: ${obj.message}`
+  else
+    p No messages at the moment
+  hr
+
+  h2 Add Message
+  form(action='/post', method='POST')
+
+      label(for='name') Name:
+      br
+      input#name(type='text', name='name' required)
+
+      br
+      br
+
+      label(for='message') Message:
+      br
+      textarea#message(name='message', cols='30', rows='10' required)
+
+      br
+      br
+
+      button(type='submit') Post Message
+
